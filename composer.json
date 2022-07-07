@@ -1,0 +1,24 @@
+{
+    "name": "xhtkyy/tools",
+    "description": "kyy tools",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "thompson",
+            "email": "so.wo@foxmail.com"
+        }
+    ],
+    "keywords": [
+        "kyy",
+        "kyy tools"
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "KyyTools\\": "src"
+        }
+    }
+}
