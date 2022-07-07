@@ -33,15 +33,20 @@ class OpenCCTrans implements TransInterface {
             opencc_close($od);
             return $input;
         }
+        $this->convertByOd($od, $input);
+        opencc_close($od);
+        return $input;
+    }
+
+    private function convertByOd($od, $input) {
         array_walk_recursive($input, function (&$value) use ($od) {
             if ($value instanceof Arrayable) {
-                $value = $value->toArray();
+                $value = $this->convertByOd($od, $value->toArray());
             }
             if (is_string($value)) {
                 $value = opencc_convert($value, $od);
             }
         });
-        opencc_close($od);
         return $input;
     }
 

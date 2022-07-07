@@ -25,7 +25,7 @@ class MatchTrans implements TransInterface {
         }
         array_walk_recursive($input, function (&$value) {
             if ($value instanceof Arrayable) {
-                $value = $value->toArray();
+                $value = $this->tw($value->toArray());
             }
             if (is_string($value)) {
                 $value = $this->tw_string($value);
@@ -63,7 +63,7 @@ class MatchTrans implements TransInterface {
         }
         array_walk_recursive($input, function (&$value) {
             if ($value instanceof Arrayable) {
-                $value = $value->toArray();
+                $value = $this->cn($value->toArray());
             }
             if (is_string($value)) {
                 $value = $this->cn_string($value);
