@@ -8,6 +8,8 @@ use KyyTools\Language\Translate;
 
 /**
  * @method static string|array trans(string|array|object $input, int|string|null $type = null)
+ * @method static string|array trans2cn(string|array|object $input)
+ * @method static string|array trans2tw(string|array|object $input)
  * @method static TransInterface getTranslator(int|null $type)
  */
 class Lang extends Facade {
