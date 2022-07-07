@@ -28,7 +28,7 @@ class Translate {
         if (!$type) {
             $type = Lang::getLocale(); //从全局获取
         } else if (is_int($type)) {
-            $type = strtolower(TransType::value($type));
+            $type = strtolower(TransType::key($type));
         }
         return $type;
     }
@@ -48,14 +48,14 @@ class Translate {
 
     /**
      * 获取转化类
-     * @param int|null $type
+     * @param int|null $class
      * @return TransInterface
      */
-    public function getTranslator(int $type = null): TransInterface {
-        if (!$type || $type == $this->translator->getType()) {
+    public function getTranslator(int $class = null): TransInterface {
+        if (!$class || $class == $this->translator->getType()) {
             return $this->translator;
         }
-        switch ($type) {
+        switch ($class) {
             case TransClass::OPENCC:
                 return new OpenCCTrans();
             default:

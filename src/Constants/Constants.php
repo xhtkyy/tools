@@ -25,19 +25,19 @@ abstract class Constants {
 
     /**
      * 通过key获取值
-     * @param string $key
-     * @return string|null
+     * @param mixed $key
+     * @return mixed
      */
-    public static function value(string $key): ?string {
+    public static function value($key) {
         return static::toArray()[$key] ?? null;
     }
 
     /**
      * 通过值获取key
-     * @param string $value
-     * @return string|null
+     * @param mixed $value
+     * @return int|string|null
      */
-    public static function key(string $value): ?string {
+    public static function key($value) {
         foreach (static::toArray() as $key => $item) {
             if ($item == $value) return $key;
         }

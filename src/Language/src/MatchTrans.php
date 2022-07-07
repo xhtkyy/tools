@@ -78,8 +78,8 @@ class MatchTrans implements TransInterface {
         $a     = 0;
         while ($a < $len) {
             if (ord($str[$a]) >= 224 && ord($str[$a]) <= 239) {
-                if (($temp = strpos(self::$zh_cn, $str[$a] . $str[$a + 1] . $str[$a + 2])) !== false) {
-                    $str_t .= self::$zh_tw[$temp] . self::$zh_tw[$temp + 1] . self::$zh_tw[$temp + 2];
+                if (($temp = strpos(self::$zh_tw, $str[$a] . $str[$a + 1] . $str[$a + 2])) !== false) {
+                    $str_t .= self::$zh_cn[$temp] . self::$zh_cn[$temp + 1] . self::$zh_cn[$temp + 2];
                     $a     += 3;
                     continue;
                 }
