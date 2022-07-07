@@ -1,6 +1,6 @@
 <?php
 
-namespace KyyTools\Provider;
+namespace KyyTools\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use KyyTools\Language\Translate;
@@ -25,7 +25,7 @@ class LoggerProvider extends ServiceProvider {
      */
     public function register() {
         $this->app->singleton(Translate::class, function ($app) {
-            return new Logger(config("kyy_logger"));
+            return new Logger();
         });
     }
 }

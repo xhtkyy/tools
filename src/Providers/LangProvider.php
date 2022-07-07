@@ -1,6 +1,6 @@
 <?php
 
-namespace KyyTools\Provider;
+namespace KyyTools\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use KyyTools\Language\Translate;
