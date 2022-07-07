@@ -20,10 +20,10 @@ class Logger {
     private static $channels = [];
     protected $config;
 
-    public function __construct(array $config) {
+    public function __construct($config) {
         //先置空
         static::$channels = [];
-        $this->config     = $config;
+        $this->config     = $config ?? [];
     }
 
     public function channel(string $name = "app"): LoggerInterface {

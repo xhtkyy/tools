@@ -25,7 +25,7 @@ class LoggerProvider extends ServiceProvider {
      */
     public function register() {
         $this->app->singleton(Translate::class, function ($app) {
-            return new Logger(config("logger"));
+            return new Logger(config("kyy_logger"));
         });
     }
 }
