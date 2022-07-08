@@ -15,7 +15,8 @@ use Psr\Log\LoggerInterface;
  * @method static void notice(string $message, array $context = [])
  * @method static void info(string $message, array $context = [])
  * @method static void debug(string $message, array $context = [])
- * @method static void log($level, string $message, array $context = [])
+ * @method static void log(string $channel, $level, string $message, array $context = [])
+ * @method static void exception($channel, $exception, $level = 400)
  * @method static LoggerInterface channel(string $channel = null)
  */
 class Log extends Facade {

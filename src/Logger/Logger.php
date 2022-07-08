@@ -44,11 +44,16 @@ class Logger {
         $this->channel($channel)->log($level, $message, $context);
     }
 
+    public function exception($channel, \Throwable $exception, $level = 400) {
+        $this->channel($channel)->log($level, $exception->getMessage(), [
+            "code" => $exception->getCode(),
+            "line" => $exception->getFile() . ": " . $exception->getLine()
+        ]);
+    }
+
     public function __call($name, $arguments) {
-        if ($name == "log") {
-            $this->log(...$arguments);
-        } elseif ($name == "channel") {
-            $this->channel(...$arguments);
+        if (in_array($name, ["log", "channel", "exception"])) {
+            $this->$name(...$arguments);
         } else {
             $this->log("app", $name, ...$arguments);
         }
