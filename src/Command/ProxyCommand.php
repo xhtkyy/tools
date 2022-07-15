@@ -35,7 +35,7 @@ class ProxyCommand extends Command {
     public function handle() {
         $class = $this->argument('class');
         if (!class_exists($class)) {
-            $this->line("$class not found");
+            $this->output->write("$class not found");
             return;
         }
         //反序列
@@ -48,9 +48,9 @@ class ProxyCommand extends Command {
             if (is_array($res)) {
                 $res = json_encode($res, JSON_UNESCAPED_UNICODE);
             }
-            $this->line($res);
+            $this->output->write($res);
         } catch (\Exception $exception) {
-            $this->line($exception->getMessage());
+            $this->output->write($exception->getMessage());
         }
     }
 }
