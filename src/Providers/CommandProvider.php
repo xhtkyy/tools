@@ -20,9 +20,6 @@ class CommandProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-//        $this->app->singleton('command.kyy.proxy', function () {
-//            return new ProxyCommand();
-//        });
         if ($this->app->runningInConsole()) {
             $this->commands([
                 ProxyCommand::class,

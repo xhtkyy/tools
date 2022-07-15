@@ -33,13 +33,24 @@ class ProxyCommand extends Command {
      * 执行命令
      */
     public function handle() {
-        $res = call_user_func([$this->argument('class'), $this->argument("func") ?? "do"], $this->option("args") ?? []);
-        if ($res instanceof Arrayable) {
-            $res = $res->toArray();
+        $class = $this->argument('class');
+        if (!class_exists($class)) {
+            $this->line("$class not found");
+            return;
         }
-        if (is_array($res)) {
-            $res = json_encode($res, JSON_UNESCAPED_UNICODE);
+        //反序列
+        $args = unserialize(str_replace('#', '"', $this->option("args")));
+        try {
+            $res = (new $class)->{$this->argument("func")}($args);
+            if ($res instanceof Arrayable) {
+                $res = $res->toArray();
+            }
+            if (is_array($res)) {
+                $res = json_encode($res, JSON_UNESCAPED_UNICODE);
+            }
+            $this->line($res);
+        } catch (\Exception $exception) {
+            $this->line($exception->getMessage());
         }
-        $this->line($res);
     }
 }
