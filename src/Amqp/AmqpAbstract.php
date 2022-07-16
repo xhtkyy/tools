@@ -8,7 +8,7 @@ abstract class AmqpAbstract implements AmqpInterface {
 
     public static function produce(...$args): bool {
         //只做校验参数
-        $temp = new static(...$args);
+        $temp = new static(...func_get_args());
         unset($temp);
         dd([base_path(), "\\\\" . str_replace("\\", "\\\\", static::class), "consume", str_replace("\"", "#", serialize(func_get_args()))]);
         //推送消费

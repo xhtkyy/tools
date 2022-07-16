@@ -41,7 +41,7 @@ class RemoteProxyCommand extends Command {
         $class = $this->argument('class');
         $func  = $this->argument("func");
         $args  = $this->option("args");
-
+        $line  = 0;
         try {
             if (!class_exists($class) || !method_exists($class, $func)) {
                 throw new Exception("[class]$class [method]$func not found");
@@ -51,7 +51,7 @@ class RemoteProxyCommand extends Command {
                 //反序列
                 $args = unserialize(str_replace('#', '"', $args));
             }
-            if (is_array($args)) $args = [$args];
+            if (!is_array($args)) $args = [$args];
             $message = (new $class(...$args))->{$this->argument("func")}();
             if ($message instanceof Arrayable) {
                 $message = $message->toArray();
@@ -66,9 +66,10 @@ class RemoteProxyCommand extends Command {
             }
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
+            $line    = $exception->getLine();
         }
         //记录错误日志
-        Log::channel("remote-proxy")->error($message, compact("class", "func", "args"));
+        Log::channel("remote-proxy")->error($message, compact("class", "func", "args", "line"));
         //返回
         $this->output->write($message);
     }
