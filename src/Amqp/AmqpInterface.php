@@ -13,5 +13,5 @@ interface AmqpInterface {
      * 消费
      * @return mixed
      */
-    public function consume(...$args): string;
+    public function consume(): string;
 }
