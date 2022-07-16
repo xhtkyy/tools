@@ -3,7 +3,7 @@
 namespace KyyTools\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use KyyTools\Command\ProxyCommand;
+use KyyTools\Command\RemoteProxyCommand;
 
 class CommandProvider extends ServiceProvider {
     /**
@@ -22,7 +22,7 @@ class CommandProvider extends ServiceProvider {
     public function register() {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                ProxyCommand::class,
+                RemoteProxyCommand::class, //远程代理类
             ]);
         }
     }
