@@ -6,13 +6,13 @@ abstract class AmqpAbstract implements AmqpInterface {
 
     const SUCCESS = "success";
 
-    public function produce(): bool {
-        var_dump([static::class, "consume"]);
+    public static function produce(...$args): bool {
+        var_dump([base_path(), static::class, "consume", func_get_args()]);
         //推送消费
         return true;
     }
 
-    public function consume($data): string {
+    public function consume(...$args): string {
         //默认响应成功
         return self::SUCCESS;
     }
