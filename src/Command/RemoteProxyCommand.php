@@ -47,10 +47,8 @@ class RemoteProxyCommand extends Command {
                 throw new Exception("[class]$class [method]$func not found");
             }
             //检查是序列化结果
-            if (strstr($args, "#") && strstr($args, "{")) {
-                //反序列
-                $args = unserialize(str_replace('#', '"', $args));
-            }
+            //反序列
+            $args = unserialize(str_replace('#', '"', $args));
             if (!is_array($args)) $args = [$args];
             $message = (new $class(...$args))->{$this->argument("func")}();
             if ($message instanceof Arrayable) {
