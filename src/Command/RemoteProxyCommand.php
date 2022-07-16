@@ -51,6 +51,7 @@ class RemoteProxyCommand extends Command {
                 //反序列
                 $args = unserialize(str_replace('#', '"', $args));
             }
+            if(is_array($args)) $args = [$args];
             $message = (new $class)->{$this->argument("func")}(...$args);
             if ($message instanceof Arrayable) {
                 $message = $message->toArray();

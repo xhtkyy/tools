@@ -7,7 +7,7 @@ abstract class AmqpAbstract implements AmqpInterface {
     const SUCCESS = "success";
 
     public static function produce(...$args): bool {
-        var_dump([base_path(), static::class, "consume", func_get_args()]);
+        dd([base_path(), "\\\\" . str_replace("\\", "\\\\", static::class), "consume", str_replace("\"", "#", serialize(func_get_args()))]);
         //推送消费
         return true;
     }
