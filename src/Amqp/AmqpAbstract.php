@@ -22,7 +22,7 @@ abstract class AmqpAbstract implements AmqpInterface {
         //推送消费
         $params = new Params();
         $params->setPath(base_path());
-        $params->setClass("\\\\" . str_replace("\\", "\\\\", static::class));
+        $params->setClass("\\" . static::class);
         $params->setFunc("consume");
         $params->setArgs(str_replace("\"", "#", serialize(func_get_args()))); //设置参数
         $params->setDelay($class->delay);
