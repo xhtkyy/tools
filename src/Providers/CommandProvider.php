@@ -12,6 +12,9 @@ class CommandProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
+        // 发布配置文件
+        $path = realpath(__DIR__ . '/../../config/kyy_remote_proxy.php');
+        $this->publishes([$path => config_path('kyy_remote_proxy.php')], 'config');
     }
 
     /**
