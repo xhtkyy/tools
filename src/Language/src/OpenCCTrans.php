@@ -30,10 +30,9 @@ class OpenCCTrans implements TransInterface {
         $od = opencc_open($json);
         if (is_string($input)) {
             $input = opencc_convert($input, $od);
-            opencc_close($od);
-            return $input;
+        } else {
+            $input = $this->convertByOd($od, $input);
         }
-        $this->convertByOd($od, $input);
         opencc_close($od);
         return $input;
     }
