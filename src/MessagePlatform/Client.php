@@ -15,10 +15,9 @@ class Client {
      */
     public function getClient($client = AuthClient::class) {
         if (!isset(self::$client[$client])) {
-            new AuthClient(config('kyy_message_platform.hostname'), [
+            self::$client[$client] = new $client(config('kyy_message_platform.hostname'), [
                 'credentials' => null,
             ]);
-            self::$client[$client] = new $client();
         }
         return self::$client[$client];
     }
