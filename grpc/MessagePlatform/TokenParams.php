@@ -14,9 +14,9 @@ use Google\Protobuf\Internal\GPBUtil;
 class TokenParams extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>int32 space_id = 1;</code>
+     * Generated from protobuf field <code>string zone = 1;</code>
      */
-    protected $space_id = 0;
+    protected $zone = '';
     /**
      * Generated from protobuf field <code>int32 role = 2;</code>
      */
@@ -36,7 +36,7 @@ class TokenParams extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type int $space_id
+     *     @type string $zone
      *     @type int $role
      *     @type int $user_id
      *     @type string $extra
@@ -48,23 +48,23 @@ class TokenParams extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int32 space_id = 1;</code>
-     * @return int
+     * Generated from protobuf field <code>string zone = 1;</code>
+     * @return string
      */
-    public function getSpaceId()
+    public function getZone()
     {
-        return $this->space_id;
+        return $this->zone;
     }
 
     /**
-     * Generated from protobuf field <code>int32 space_id = 1;</code>
-     * @param int $var
+     * Generated from protobuf field <code>string zone = 1;</code>
+     * @param string $var
      * @return $this
      */
-    public function setSpaceId($var)
+    public function setZone($var)
     {
-        GPBUtil::checkInt32($var);
-        $this->space_id = $var;
+        GPBUtil::checkString($var, True);
+        $this->zone = $var;
 
         return $this;
     }
