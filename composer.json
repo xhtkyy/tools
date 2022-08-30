@@ -26,7 +26,8 @@
     "psr-4": {
       "KyyTools\\": "src",
       "GPBMetadata\\": "grpc/GPBMetadata",
-      "RemoteProxy\\": "grpc/RemoteProxy"
+      "RemoteProxy\\": "grpc/RemoteProxy",
+      "MessagePlatform\\": "grpc/MessagePlatform"
     }
   },
   "extra": {
@@ -34,7 +35,8 @@
       "providers": [
         "KyyTools\\Providers\\LangProvider",
         "KyyTools\\Providers\\LoggerProvider",
-        "KyyTools\\Providers\\CommandProvider"
+        "KyyTools\\Providers\\CommandProvider",
+        "KyyTools\\Providers\\MessagePlatformProvider"
       ]
     }
   }
