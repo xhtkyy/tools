@@ -37,7 +37,8 @@ class Client {
          * @var Reply $reply
          */
         list($reply, $status) = $client->getToken($tokenParams)->wait();
-        if (!$reply || !$reply->getSuccess()) throw new Exception($reply->getMessage() ?? "获取令牌失败");
+        if (!$reply) throw new Exception("获取令牌失败");
+        if (!$reply->getSuccess()) throw new Exception($reply->getMessage());
         return json_decode($reply->getMessage(), true);
     }
 }
