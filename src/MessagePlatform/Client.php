@@ -41,6 +41,7 @@ class Client {
             "token_type" => $tokenParams->getTokenType(),
             "at"         => $tokenParams->getAt()
         ];
+        ksort($signData);
         $tokenParams->setPlatformKey(config("kyy_message_platform.platform_key"));
         $tokenParams->setSign(hash_hmac("sha256", http_build_query($signData), config("kyy_message_platform.platform_secret")));
         /**
