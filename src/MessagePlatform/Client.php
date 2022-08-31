@@ -33,6 +33,16 @@ class Client {
          * @var AuthClient $client
          */
         $client = $this->getClient();
+        //生成密钥
+        $signData = [
+            "zone"       => $tokenParams->getZone(),
+            "user_id"    => $tokenParams->getUserId(),
+            "role"       => $tokenParams->getRole(),
+            "token_type" => $tokenParams->getTokenType(),
+            "at"         => $tokenParams->getAt()
+        ];
+        $tokenParams->setPlatformKey(config("kyy_message_platform.platform_key"));
+        $tokenParams->setSign(hash_hmac("sha256", http_build_query($signData), config("kyy_message_platform.platform_secret")));
         /**
          * @var Reply $reply
          */

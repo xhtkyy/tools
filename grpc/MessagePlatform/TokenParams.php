@@ -29,6 +29,22 @@ class TokenParams extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string extra = 4;</code>
      */
     protected $extra = '';
+    /**
+     * Generated from protobuf field <code>.MessagePlatform.TokenType token_type = 5;</code>
+     */
+    protected $token_type = 0;
+    /**
+     * Generated from protobuf field <code>string platform_key = 6;</code>
+     */
+    protected $platform_key = '';
+    /**
+     * Generated from protobuf field <code>string sign = 7;</code>
+     */
+    protected $sign = '';
+    /**
+     * Generated from protobuf field <code>int32 at = 8;</code>
+     */
+    protected $at = 0;
 
     /**
      * Constructor.
@@ -40,6 +56,10 @@ class TokenParams extends \Google\Protobuf\Internal\Message
      *     @type int $role
      *     @type int $user_id
      *     @type string $extra
+     *     @type int $token_type
+     *     @type string $platform_key
+     *     @type string $sign
+     *     @type int $at
      * }
      */
     public function __construct($data = NULL) {
@@ -131,6 +151,94 @@ class TokenParams extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->extra = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>.MessagePlatform.TokenType token_type = 5;</code>
+     * @return int
+     */
+    public function getTokenType()
+    {
+        return $this->token_type;
+    }
+
+    /**
+     * Generated from protobuf field <code>.MessagePlatform.TokenType token_type = 5;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setTokenType($var)
+    {
+        GPBUtil::checkEnum($var, \MessagePlatform\TokenType::class);
+        $this->token_type = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string platform_key = 6;</code>
+     * @return string
+     */
+    public function getPlatformKey()
+    {
+        return $this->platform_key;
+    }
+
+    /**
+     * Generated from protobuf field <code>string platform_key = 6;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setPlatformKey($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->platform_key = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string sign = 7;</code>
+     * @return string
+     */
+    public function getSign()
+    {
+        return $this->sign;
+    }
+
+    /**
+     * Generated from protobuf field <code>string sign = 7;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setSign($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->sign = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 at = 8;</code>
+     * @return int
+     */
+    public function getAt()
+    {
+        return $this->at;
+    }
+
+    /**
+     * Generated from protobuf field <code>int32 at = 8;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setAt($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->at = $var;
 
         return $this;
     }

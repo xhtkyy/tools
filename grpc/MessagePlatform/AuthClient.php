@@ -30,4 +30,18 @@ class AuthClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param \MessagePlatform\TokenParams $argument input argument
+     * @param array $metadata metadata
+     * @param array $options call options
+     * @return \MessagePlatform\Reply
+     */
+    public function checkToken(\MessagePlatform\TokenParams $argument,
+      $metadata = [], $options = []) {
+        return $this->_simpleRequest('/MessagePlatform.Auth/checkToken',
+        $argument,
+        ['\MessagePlatform\Reply', 'decode'],
+        $metadata, $options);
+    }
+
 }
