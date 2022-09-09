@@ -40,9 +40,11 @@ class Client {
          * @var Reply $reply
          */
         list($reply, $status) = $client->getToken($tokenParams, [
-            "at"             => $at,
-            "platform_key"   => $platform_key,
-            "platform_token" => hash_hmac("sha256", http_build_query(compact("platform_key", "at")), config("kyy_message_platform.platform_secret"))
+            "at"             => ["{$at}"],
+            "platform_key"   => [$platform_key],
+            "platform_token" => [
+                hash_hmac("sha256", http_build_query(compact("platform_key", "at")), config("kyy_message_platform.platform_secret"))
+            ]
         ])->wait();
         if (!$reply) throw new Exception("获取令牌失败");
         if (!$reply->getSuccess()) throw new Exception($reply->getMessage());
