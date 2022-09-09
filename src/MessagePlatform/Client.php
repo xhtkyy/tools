@@ -34,20 +34,16 @@ class Client {
          */
         $client = $this->getClient();
         //生成密钥
-        $signData = [
-            "zone"       => $tokenParams->getZone(),
-            "user_id"    => $tokenParams->getUserId(),
-            "role"       => $tokenParams->getRole(),
-            "token_type" => $tokenParams->getTokenType(),
-            "at"         => $tokenParams->getAt()
-        ];
-        ksort($signData);
-        $tokenParams->setPlatformKey(config("kyy_message_platform.platform_key"));
-        $tokenParams->setSign(hash_hmac("sha256", http_build_query($signData), config("kyy_message_platform.platform_secret")));
+        $at           = $tokenParams->getAt();
+        $platform_key = config("kyy_message_platform.platform_key");
         /**
          * @var Reply $reply
          */
-        list($reply, $status) = $client->getToken($tokenParams)->wait();
+        list($reply, $status) = $client->getToken($tokenParams, [
+            "at"             => $at,
+            "platform_key"   => $platform_key,
+            "platform_token" => hash_hmac("sha256", http_build_query(compact("platform_key", "at")), config("kyy_message_platform.platform_secret"))
+        ])->wait();
         if (!$reply) throw new Exception("获取令牌失败");
         if (!$reply->getSuccess()) throw new Exception($reply->getMessage());
         return json_decode($reply->getMessage(), true);
