@@ -27,7 +27,8 @@
       "KyyTools\\": "src",
       "GPBMetadata\\": "grpc/GPBMetadata",
       "RemoteProxy\\": "grpc/RemoteProxy",
-      "MessagePlatform\\": "grpc/MessagePlatform"
+      "MessagePlatform\\": "grpc/MessagePlatform",
+      "Pusher\\": "grpc/Pusher"
     }
   },
   "extra": {
@@ -36,7 +37,8 @@
         "KyyTools\\Providers\\LangProvider",
         "KyyTools\\Providers\\LoggerProvider",
         "KyyTools\\Providers\\CommandProvider",
-        "KyyTools\\Providers\\MessagePlatformProvider"
+        "KyyTools\\Providers\\MessagePlatformProvider",
+        "KyyTools\\Providers\\GrpcClientProvider"
       ]
     }
   }

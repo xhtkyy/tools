@@ -4,3 +4,10 @@ if(!function_exists('config')){
         return "";
     }
 }
+
+if (! function_exists('app')) {
+    function app($abstract = null, array $parameters = [])
+    {
+        return null;
+    }
+}
