@@ -16,7 +16,7 @@ class MessageClient {
         /**
          * @var \Pusher\MessageClient $res
          */
-        $res = app(GrpcClient::class)->get(MessageClient::class, config("kyy_pusher.hostname"));
+        $res = app(GrpcClient::class)->get(\Pusher\MessageClient::class, config("kyy_pusher.hostname"));
         return $res;
     }
 
