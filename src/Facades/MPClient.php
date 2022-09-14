@@ -12,7 +12,7 @@ use MessagePlatform\TokenParams;
  * @method static mixed authGetToken(TokenParams $tokenParams)
  * @method static mixed pushModuleMessage(string $module_key, array $acceptUsers, array $extra = [], int $role = Role::PURCHASER, int $channel = MessageChannel::NONE)
  */
-class MessagePlatformClient extends Facade {
+class MPClient extends Facade {
     /**
      * Get the registered name of the component.
      *
