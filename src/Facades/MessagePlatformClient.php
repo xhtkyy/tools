@@ -4,10 +4,13 @@ namespace KyyTools\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use KyyTools\MessagePlatform\Client;
+use MessagePlatform\MessageChannel;
+use MessagePlatform\Role;
 use MessagePlatform\TokenParams;
 
 /**
  * @method static mixed authGetToken(TokenParams $tokenParams)
+ * @method static mixed pushModuleMessage(string $module_key, array $acceptUsers, array $extra = [], int $role = Role::PURCHASER, int $channel = MessageChannel::NONE)
  */
 class MessagePlatformClient extends Facade {
     /**
