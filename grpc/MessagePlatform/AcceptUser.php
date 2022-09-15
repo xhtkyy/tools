@@ -21,6 +21,10 @@ class AcceptUser extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated int32 ids = 2;</code>
      */
     private $ids;
+    /**
+     * Generated from protobuf field <code>repeated string auths = 3;</code>
+     */
+    private $auths;
 
     /**
      * Constructor.
@@ -30,6 +34,7 @@ class AcceptUser extends \Google\Protobuf\Internal\Message
      *
      *     @type int $role
      *     @type int[]|\Google\Protobuf\Internal\RepeatedField $ids
+     *     @type string[]|\Google\Protobuf\Internal\RepeatedField $auths
      * }
      */
     public function __construct($data = NULL) {
@@ -77,6 +82,28 @@ class AcceptUser extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::INT32);
         $this->ids = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string auths = 3;</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getAuths()
+    {
+        return $this->auths;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string auths = 3;</code>
+     * @param string[]|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setAuths($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->auths = $arr;
 
         return $this;
     }
