@@ -12,6 +12,7 @@ use MessagePlatform\ModulePushParams;
 use MessagePlatform\Reply;
 use MessagePlatform\Role;
 use MessagePlatform\TokenParams;
+use MessagePlatform\Zone;
 
 class Client {
     /**
@@ -52,7 +53,7 @@ class Client {
      * @return mixed
      * @throws Exception
      */
-    public function pushModuleMessage(string $module_key, array $acceptUsers, array $extra = [], int $role = Role::PURCHASER, int $channel = MessageChannel::NONE) {
+    public function pushModuleMessage(string $module_key, array $acceptUsers, array $extra = [], int $role = Role::PURCHASER, int $channel = MessageChannel::NONE, int $zone = Zone::NONE) {
         /**
          * @var ModuleClient $client
          */
@@ -67,7 +68,8 @@ class Client {
         $params->setModuleKey($module_key)
             ->setAcceptUsers($acceptUsers)
             ->setChannelId($channel)
-            ->setExtra(json_encode($extra));
+            ->setExtra(json_encode($extra))
+            ->setZone($zone);
         //生成密钥
         $at           = time();
         $platform_key = config("kyy_message_platform.platform_key");

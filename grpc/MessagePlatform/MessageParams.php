@@ -35,6 +35,12 @@ class MessageParams extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int32 try_num = 5;</code>
      */
     protected $try_num = 0;
+    /**
+     *允许指定区域
+     *
+     * Generated from protobuf field <code>.MessagePlatform.Zone zone = 6;</code>
+     */
+    protected $zone = 0;
 
     /**
      * Constructor.
@@ -47,6 +53,8 @@ class MessageParams extends \Google\Protobuf\Internal\Message
      *     @type \MessagePlatform\AcceptUser[]|\Google\Protobuf\Internal\RepeatedField $accept_users
      *     @type string $extra
      *     @type int $try_num
+     *     @type int $zone
+     *          允许指定区域
      * }
      */
     public function __construct($data = NULL) {
@@ -160,6 +168,32 @@ class MessageParams extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt32($var);
         $this->try_num = $var;
+
+        return $this;
+    }
+
+    /**
+     *允许指定区域
+     *
+     * Generated from protobuf field <code>.MessagePlatform.Zone zone = 6;</code>
+     * @return int
+     */
+    public function getZone()
+    {
+        return $this->zone;
+    }
+
+    /**
+     *允许指定区域
+     *
+     * Generated from protobuf field <code>.MessagePlatform.Zone zone = 6;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setZone($var)
+    {
+        GPBUtil::checkEnum($var, \MessagePlatform\Zone::class);
+        $this->zone = $var;
 
         return $this;
     }
